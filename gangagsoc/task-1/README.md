@@ -12,6 +12,10 @@
   
     `python pdf_split.py`
     
+  * The [count_occurences.py](./count_occurences.py) file counts the number of occurences of the word 'the' in PDF file. This file is used by the job. This file can be used as:
+  
+    `python count_occurences.py <filename>.pdf`
+    
   * Making a job and splitting it into subjobs ([ganga_job_splitter.py](./ganga_job_splitter.py)): 
   
     `python ganga_job_splitter.py`
