@@ -5,8 +5,6 @@ import textract
 # The filename of the pdf is passed as a command line argument.
 filename = sys.argv[1]
 
-count = 0
-
 # Extract the text and convert it to lower case.
 text_bytes = textract.process(filename)
 text = text_bytes.decode("utf-8")
