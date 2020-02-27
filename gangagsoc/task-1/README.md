@@ -15,7 +15,8 @@
   * Making a job and splitting it into subjobs: 
   
     `python ganga_job_splitter.py`
- 
- 
+   
+  * The total count of all occurrences of the word 'the' is stored in a file named 'stdout'. Print the file to get the result.
+    `cat stdout` 
 
 Note: The ganga namespace is imported in both files. So it is perfectly fine to run the file with either the python or the ganga interpreter. 
