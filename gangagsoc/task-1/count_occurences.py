@@ -3,15 +3,21 @@ import sys
 import textract
 
 # The filename of the pdf is passed as a command line argument.
-filename = sys.argv[1]
 
-# Extract the text and convert it to lower case.
-text_bytes = textract.process(filename)
-text = text_bytes.decode("utf-8")
-text = text.lower()
+def extract_text(pdf_file_name):
+    text_bytes = textract.process(filename)
+    text = text_bytes.decode("utf-8")
+    return text
 
-# Find all matches of the word "the" separated by a word boundary on both sides.
-matches = re.findall(r"\bthe\b", text)
+def find_occurences(word, text):
+    matches = re.findall(rf"\b{word}\b", text)
+    return len(matches)
 
-# Print the number of matches.
-print(len(matches))
+
+if __name__ == '__main__':
+    filename = sys.argv[1]
+    word = 'the'
+    text = extract_text(filename)
+    text = text.lower()
+    num_occurences = find_occurences(word, text)
+    print(num_occurences)
