@@ -1,18 +1,18 @@
 # Ganga Initial Task
 
 ### Hello World
-  Run the [hello_world.py](./task-1/hello_world.py) file to see a demonstration of a simple job. 
+  Run the [hello_world.py](./hello_world.py) file to see a demonstration of a simple job. 
    
    `python hello_world.py`
 
 
 ### Demonstrating the Arg Splitter
 
-  * Splitting the PDF ([pdf_split.py](./task-1/pdf_split.py)): 
+  * Splitting the PDF ([pdf_split.py](./pdf_split.py)): 
   
     `python pdf_split.py`
     
-  * Making a job and splitting it into subjobs ([ganga_job_splitter.py](./task-1/ganga_job_splitter.py)): 
+  * Making a job and splitting it into subjobs ([ganga_job_splitter.py](./ganga_job_splitter.py)): 
   
     `python ganga_job_splitter.py`
    
