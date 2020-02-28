@@ -19,5 +19,5 @@ if __name__ == '__main__':
     filename = sys.argv[1]
     word = 'the'
     text = extract_text(filename)
-    num_occurences = find_occurences(word, text)
-    print(num_occurences)
+    num = num_occurences(word, text)
+    print(num)
