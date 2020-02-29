@@ -13,3 +13,4 @@ class JobModel(Base):
 
     def __repr__(self):
         return f"Job({self.id}, name={self.name})"
+

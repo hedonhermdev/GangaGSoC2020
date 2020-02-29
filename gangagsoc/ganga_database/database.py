@@ -1,5 +1,3 @@
-# Demonstration of saving a Job to the database
-# and retreiving it from the database to another job.
 import io
 
 from sqlalchemy import create_engine
