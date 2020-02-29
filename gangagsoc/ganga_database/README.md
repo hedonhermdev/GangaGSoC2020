@@ -21,7 +21,7 @@
       ```mysql
       mysql> CREATE DATABASE gangadb;
       mysql> CREATE USER 'gangauser'@'localhost' IDENTIFIED BY 'gangagsoc2020';
-      mysql> GRANT ALL PRIVILEGES ON 'gangadb'.* To 'gangauser'@'localhost';
+      mysql> GRANT ALL ON gangadb.* TO 'gangauser'@'localhost';
       ```
 
     Note: If you are changing the values for the above then you will have to set the appropriate values in the [config.py](./config.py) file. 
@@ -43,3 +43,5 @@ All tests reside in the test folder. To run the tests with pytest:
   $ pytest test/
 ```
 
+## Documentation
+The code is well documented with the use of comments and docstrings. An overview of the code can be found in [documentation.md](./documentation.md)
