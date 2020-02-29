@@ -14,7 +14,6 @@ from ganga import (
     jobs,
 )
 
-
 # List all PDF files in the cern-pages directory.
 pdf_files = os.listdir("./cern-pages/")
 
@@ -34,15 +33,18 @@ split_job.splitter.args = [
     ["count_occurences.py", filename] for i, filename in enumerate(pdf_files, start=1)
 ]
 
-# Submit the job.
-split_job.submit()
-
-# Start monitoring loop with 2 steps to wait for the job to completed.
-runMonitoring(steps=2, jobs=jobs[-1:])
-
 # To count the total number of occurences, we define a custom merger (defined in file sum_merger.py) which takes the sum of the count in the output file of each subjob.
 merger = CustomMerger(files=["stdout"], module="./sum_merger.py", overwrite=True)
 
-# If the job has submitted, merge the outputs.
-if split_job.status == "completed":
-    merger.merge(split_job, outputdir="./")
+
+if __name__ == "__main__":
+    # Submit the job.
+    split_job.submit()
+
+    # Start monitoring loop with 2 steps to wait for the job to completed.
+    runMonitoring(steps=2, jobs=jobs[-1:])
+
+    # If the job has submitted, merge the outputs.
+    if split_job.status == "completed":
+        merger.merge(split_job, outputdir="./")
+
