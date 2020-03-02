@@ -22,3 +22,11 @@ class TestJobData(unittest.TestCase):
         job_data = "Job()".encode()  # Simple job data.
         job = create_job_from_data(job_data)
         assert isinstance(job, Job)
+
+    def test_job_data_same(self):
+        job = Job()
+        data = create_job_data(job)
+        new_job = create_job_from_data(data)
+        assert job.name == new_job.name
+        assert job.application == new_job.application
+
