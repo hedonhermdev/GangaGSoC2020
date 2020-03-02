@@ -1,9 +1,10 @@
 import io
 
-from sqlalchemy import create_engine
-from sqlalchemy.orm import Session
 import ganga.ganga
 from ganga import *
+
+from sqlalchemy import create_engine
+from sqlalchemy.orm import Session
 
 from gangagsoc.ganga_database.config import DBConfig
 from gangagsoc.ganga_database.models import Base, JobModel
