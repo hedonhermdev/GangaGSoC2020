@@ -10,22 +10,14 @@
 
 ## Setting Up the Database
 
-  * Install MySQL server on your machine. Instructions can be found [here](https://dev.mysql.com/doc/mysql-installation-excerpt/5.7/en/) depending on your system. 
-  * Start a database session from the command line and create a database and a user for that database. 
+  * Install MySQL server on your machine. Instructions can be found [here](https://docs.docker.com/install/) depending on your system. 
 
+  * Go to the `db-docker` directory in the root folder. And start the docker container for the MySQL server. 
       ```bash
-      $ #  mysql --user=user_name --password
-      $ sudo mysql
-      ```
-  * Once in the mysql prompt, type the following commands: 
-      ```mysql
-      mysql> CREATE DATABASE gangadb;
-      mysql> CREATE USER 'gangauser'@'localhost' IDENTIFIED BY 'gangagsoc2020';
-      mysql> GRANT ALL ON gangadb.* TO 'gangauser'@'localhost';
-      ```
+      $ cd ../../db-docker
+      $ docker-compose up -d # The -d flag detaches the container so that the MySQL server runs in the background. 
 
-    Note: If you are changing the values for the above then you will have to set the appropriate values in the [config.py](./config.py) file. 
-
+      ```
 
 ## Demonstration
   Run the [demonstration.py](./demonstration.py) file to see a demo. 
