@@ -10,7 +10,7 @@
 
 ## Setting Up the Database
 
-  * Install MySQL server on your machine. Instructions can be found [here](https://docs.docker.com/install/) depending on your system. 
+  * Install Docker on your machine. Instructions can be found [here](https://docs.docker.com/install/) depending on your system. 
 
   * Go to the `db-docker` directory in the root folder. And start the docker container for the MySQL server. 
       ```bash
