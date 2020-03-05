@@ -5,41 +5,31 @@ os.chdir("../initial")
 from sqlalchemy.orm import Session
 import ganga
 
-from gangagsoc.ganga_database import database
+from gangagsoc.ganga_database import database as db
 from gangagsoc.ganga_database import models
 from gangagsoc.ganga_database.config import DBConfig
 from gangagsoc.initial.ganga_job_splitter import split_job
 
-# Create a database connection.
-engine = database.connect_to_db(DBConfig)
-session = Session(engine)
+# Create a db connection.
+engine = db.connect_to_db(DBConfig)
+session = db.GangaDBSession(engine)
 
-# Drop all tables and create new tables for the database.
+# Drop all tables and create new tables for the db.
 models.Base.metadata.drop_all(engine)
 models.Base.metadata.create_all(engine)
 
 # Create an instance of the JobModel to save the Job.
 id = split_job.id
 name = split_job.name
-job_data = database.create_job_data(split_job)
+job_data = db.create_job_data(split_job)
 job_db = models.JobModel(id=id, name=name, data=job_data)
+print(f"Job Saved to database - {job_db.id} - {job_db.name}")
 
 # Add the job to the session and commit the session.
 session.add(job_db)
 session.commit()
 
-# Query the database for our job.
-queried_job = session.query(models.JobModel).filter(models.JobModel.id == id).one()
+new_job = session.get_job_from_db(job_id=id)
 
-# Get data from the query.
-data = queried_job.data
+print(f"Job queried from db - {new_job.id} - {new_job.name}")
 
-# Create a new job from the queried data.
-new_job = database.create_job_from_data(data)
-new_job.name = name + " copy"
-
-print(new_job.name)
-new_job.submit()
-
-# Create a monitoring loop to wait for the job to complete.
-ganga.runMonitoring(steps=3)

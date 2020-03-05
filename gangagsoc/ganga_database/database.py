@@ -3,11 +3,13 @@ import io
 import ganga.ganga
 from ganga import *
 
+import ring
+
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
 
+from gangagsoc.ganga_database import models
 from gangagsoc.ganga_database.config import DBConfig
-from gangagsoc.ganga_database.models import Base, JobModel
 
 
 def connect_to_db(db_config):
@@ -24,6 +26,34 @@ def connect_to_db(db_config):
     engine = create_engine(connection_string)
 
     return engine
+
+
+class GangaDBSession(Session):
+    @ring.lru()
+    def get_job_from_db(self, job_id):
+        queried_job = self.query(models.JobModel).get(job_id)
+        data = queried_job.data
+        job = create_job_from_data(data)
+        return job
+
+    def save_job(self, id, name, data):
+        j = models.JobModel(id=id, name=name, data=data)
+        self.add(j)
+        self.commit()
+
+    @ring.lru()
+    def query_job_by_id(self, job_id):
+        j = self.query(models.JobModel).get(job_id)
+        return j
+
+    @ring.lru()
+    def query_job_by_name(self, job_name):
+        j = self.query(models.JobModel).get(name=job_name)
+        return j
+
+    def __ring_key__(self):
+        return ""
+
 
 
 def create_job_data(job):
