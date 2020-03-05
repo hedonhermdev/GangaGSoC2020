@@ -38,14 +38,21 @@ All tests reside in the test folder. To run the tests with pytest:
 ## Performance
   For measuring performance, use the [performance.py](./performance.py) script. It uses the Python time module to separately measure the execution time for Querying the Database and Recreating the Job from the data. Sample output of the script is shown below: 
 
-    Querying the database:
+    --- Querying the database ---
     - Number of calls: 1000
-    - Total time taken: 0.8227760791778564 miliseconds
-    - Time per call: 0.0008227760791778564 miliseconds
-    Creating a job from the data:
+    - Total time taken: 0.11946606636047363 miliseconds
+    - Time per call: 0.00011946606636047363 miliseconds
+
+    --- Creating a job from the data ---
     - Number of calls: 1000
-    - Total time taken: 26235.963821411133 miliseconds
-    - Time per call: 26.235963821411133 miliseconds
+    - Total time taken: 23905.473947525024 miliseconds
+    - Time per call: 23.905473947525024 miliseconds
+
+    --- Querying and creating a job using the cache ---
+    - Number of calls: 1000
+    - Total time taken: 50.87900161743164 miliseconds
+    - Time per call: 0.05087900161743164 miliseconds
+
 
 ## Documentation
 The code is well documented with the use of comments and docstrings. An overview of the code can be found in [documentation.md](./documentation.md)
