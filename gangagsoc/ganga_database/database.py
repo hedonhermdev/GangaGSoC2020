@@ -22,7 +22,7 @@ def connect_to_db(db_config):
     PASSWORD = getattr(db_config, "PASSWORD")
     DBNAME = getattr(db_config, "DBNAME")
 
-    connection_string = f"mysql+mysqldb://{USER}:{PASSWORD}@{HOST}:{PORT}/{DBNAME}"
+    connection_string = f"mysql+pymysql://{USER}:{PASSWORD}@{HOST}:{PORT}/{DBNAME}"
     engine = create_engine(connection_string)
 
     return engine
