@@ -10,7 +10,7 @@ setup(
     author_email="ulrik.egede@monash.edu",
     url="https://github.com/ganga-devs/GangaGSoC2020",
     keywords=["GSoC", "Ganga", "Challenge"],
-    install_requires=["pytest", "ganga", "textract", "pypdf2", "sqlalchemy", "ring"],
+    install_requires=["pytest", "ganga", "textract", "pypdf2", "sqlalchemy", "pymysql","ring"],
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",
